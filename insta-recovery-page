@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recover My Instagram — Ethical Help Only</title>
+  <meta name="description" content="Document the incident, follow official recovery steps, and keep a private log. No credentials collected. No hacking.">
+  <style>
+    :root {
+      --bg: #0f172a;          /* slate-900 */
+      --panel: #111827;       /* gray-900 */
+      --muted: #94a3b8;       /* slate-400 */
+      --text: #e5e7eb;        /* gray-200 */
+      --brand: #22d3ee;       /* cyan-400 */
+      --brand2: #a78bfa;      /* violet-400 */
+      --danger: #f87171;      /* red-400 */
+      --ok: #34d399;          /* emerald-400 */
+      --card: #0b1220;
+      --border: #1f2937;      /* gray-800 */
+      --shadow: 0 20px 38px rgba(0,0,0,.35), 0 8px 20px rgba(0,0,0,.25);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+      background: radial-gradient(1200px 800px at 10% 0%, rgba(34,211,238,.15), transparent 50%),
+                  radial-gradient(1000px 700px at 90% 0%, rgba(167,139,250,.14), transparent 50%),
+                  var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+    .banner {
+      background: linear-gradient(135deg, rgba(34,211,238,.15), rgba(167,139,250,.15));
+      border: 1px solid var(--border);
+      padding: 14px 16px; border-radius: 12px; backdrop-filter: blur(6px);
+      display: flex; gap: 10px; align-items: start; box-shadow: var(--shadow);
+    }
+    .banner b { color: var(--brand); }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin-top: 22px; }
+    .card { grid-column: span 12; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    @media (min-width: 900px) {
+      .span-7 { grid-column: span 7; }
+      .span-5 { grid-column: span 5; }
+      .span-6 { grid-column: span 6; }
+      .span-4 { grid-column: span 4; }
+      .span-8 { grid-column: span 8; }
+    }
+    .card h2 { margin: 0; font-size: 1.1rem; letter-spacing: .2px; color: #f1f5f9; padding: 16px 18px; border-bottom: 1px solid var(--border); background: rgba(15,23,42,.55); border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
+    .card .content { padding: 16px 18px; }
+    .muted { color: var(--muted); font-size: .94rem; }
+
+    .links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    @media (min-width: 720px){ .links{ grid-template-columns: repeat(4, 1fr);} }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+      padding: 12px 14px; border-radius: 12px; background: #0b1220; border: 1px solid var(--border); color: var(--text);
+      transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(0,0,0,.35); border-color: #2b394b; }
+    .btn .tag { margin-left: auto; font-size: .75rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+
+    .steps { counter-reset: step; display: grid; gap: 12px; }
+    .step { border: 1px dashed #263244; border-radius: 12px; padding: 12px 12px 12px 44px; position: relative; background: #0b1220; }
+    .step::before { counter-increment: step; content: counter(step); position: absolute; left: 10px; top: 10px; width: 24px; height: 24px; display: grid; place-items: center; background: linear-gradient(135deg, var(--brand), var(--brand2)); color: #0b1220; border-radius: 6px; font-weight: 700; font-size: .9rem; }
+
+    .checklist label { display: flex; align-items: start; gap: 10px; padding: 10px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: #0b1220; }
+    .checklist input { margin-top: 3px; }
+
+    .log { display: grid; gap: 8px; }
+    .log-item { border: 1px solid var(--border); border-radius: 10px; padding: 10px; background: #0b1220; }
+
+    .field { display: grid; gap: 6px; margin-bottom: 12px; }
+    .field input, .field textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); }
+    .row { display: grid; gap: 10px; grid-template-columns: 1fr; }
+    @media (min-width: 640px){ .row { grid-template-columns: repeat(2,1fr);} }
+
+    .note { font-size: .9rem; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: rgba(248,113,113,.08); color: #fecaca; }
+    .success { background: rgba(16,185,129,.08); color: #bbf7d0; }
+
+    footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 40px 0; }
+    code.inline { background: #0b1220; padding: 2px 6px; border: 1px solid var(--border); border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="banner" role="alert" aria-live="polite">
+      <div>🔐</div>
+      <div>
+        <b>Ethical & safe:</b> This page never asks for your password, 2FA codes, or recovery links. It simply organizes official steps and your private notes.
+        <div class="muted">Beware of scams: anyone promising to “hack it back” is likely violating laws and could get you banned.</div>
+      </div>
+    </div>
+
+    <header style="margin:22px 0 8px 0; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <h1 style="margin:0; font-size:clamp(1.4rem,2.6vw,2rem); letter-spacing:.3px;">Recover My Instagram — Incident Hub</h1>
+      <div class="muted">No hacking. Official links + personal log.</div>
+    </header>
+
+    <div class="grid">
+      <!-- Quick Links -->
+      <section class="card span-7">
+        <h2>Official Recovery Links</h2>
+        <div class="content">
+          <div class="links">
+            <a class="btn" href="https://www.instagram.com/hacked/" target="_blank" rel="noopener">Instagram.com/hacked <span class="tag">Start here</span></a>
+            <a class="btn" href="https://help.instagram.com/368191326593075" target="_blank" rel="noopener">Hacked Account (Help Center)</a>
+            <a class="btn" href="https://help.instagram.com/149494825257596" target="_blank" rel="noopener">Think you were hacked?</a>
+            <a class="btn" href="https://help.instagram.com/1682636905358680" target="_blank" rel="noopener">Email changed guidance</a>
+            <a class="btn" href="https://help.instagram.com/358911864194456" target="_blank" rel="noopener">No email/phone access</a>
+            <a class="btn" href="https://help.instagram.com/409847499070242" target="_blank" rel="noopener">Reset password</a>
+          </div>
+          <p class="muted" style="margin-top:12px;">Open on a device you've used to log in before for best results.</p>
+        </div>
+      </section>
+
+      <!-- Guided Steps -->
+      <section class="card span-5">
+        <h2>Do This Now</h2>
+        <div class="content steps">
+          <div class="step">Use <b>instagram.com/hacked</b> and select <i>My account was hacked</i>, then follow identity verification (video selfie/ID if prompted).</div>
+          <div class="step">If your email was changed, check your inbox for a reversal email from Instagram and click <i>Revert this change</i> immediately.</div>
+          <div class="step">On a trusted device, try <i>Forgot password</i> → <i>Need more help?</i> and request a login link/code.</div>
+          <div class="step">Once back in: remove unknown devices/sessions, revoke suspicious apps, set a new unique password, enable 2‑factor (authenticator app).</div>
+        </div>
+      </section>
+
+      <!-- Personal Details -->
+      <section class="card span-7">
+        <h2>Incident Details (Private)</h2>
+        <div class="content">
+          <div class="row">
+            <div class="field"><label>IG Username</label><input id="username" placeholder="@yourname" /></div>
+            <div class="field"><label>Contact Email (yours)</label><input id="email" type="email" placeholder="you@example.com" /></div>
+          </div>
+          <div class="field"><label>What happened?</label><textarea id="story" rows="5" placeholder="Timeline, suspicious links, changes you noticed... (stored only in your browser)"></textarea></div>
+          <button class="btn" id="saveIncident">Save details (local only)</button>
+          <p id="saveMsg" class="muted" style="margin-top:8px; display:none;">Saved to your browser (localStorage). No data leaves your device.</p>
+        </div>
+      </section>
+
+      <!-- Security Checklist -->
+      <section class="card span-5">
+        <h2>Security Checklist</h2>
+        <div class="content checklist" id="checklist">
+          <label><input type="checkbox" data-key="pwd" /> I set a new, 14+ character unique password (not used anywhere else).</label>
+          <label><input type="checkbox" data-key="2fa" /> I enabled two‑factor with an authenticator app (not SMS if possible).</label>
+          <label><input type="checkbox" data-key="sessions" /> I logged out unknown devices/sessions and removed suspicious apps.</label>
+          <label><input type="checkbox" data-key="emailrevert" /> I reversed any unauthorized email/phone changes via Instagram’s email.</label>
+          <label><input type="checkbox" data-key="alerts" /> I turned on login alerts and reviewed recent logins.</label>
+        </div>
+        <div class="content">
+          <div id="allDone" class="note success" style="display:none;">✅ Nice! You’ve completed the essentials. Keep monitoring for a few days.</div>
+        </div>
+      </section>
+
+      <!-- Recovery Log -->
+      <section class="card span-12">
+        <h2>Recovery Log</h2>
+        <div class="content">
+          <div class="row">
+            <div class="field"><label>New Log Entry</label><input id="logText" placeholder="e.g., Submitted selfie verification, ticket #..." /></div>
+            <div class="field"><label>Timestamp</label><input id="logTime" type="datetime-local" /></div>
+          </div>
+          <button class="btn" id="addLog">Add to Log</button>
+          <p class="muted" style="margin-top:8px;">Your log is stored only in your browser. You can export it below.</p>
+          <div id="logList" class="log" style="margin-top:12px;"></div>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" id="exportLog" style="width:auto;">Export Log (.json)</button>
+            <button class="btn" id="clearLog" style="width:auto;">Clear Log</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact (No Credentials) -->
+      <section class="card span-12">
+        <h2>Contact Me (No Passwords!)</h2>
+        <div class="content">
+          <p class="note">⚠️ Never send passwords, 2FA codes, or recovery links. This email is for legitimate correspondence only.</p>
+          <form action="mailto:your.email@example.com" method="post" enctype="text/plain" style="margin-top:12px;">
+            <div class="row">
+              <div class="field"><label>Your Name</label><input name="name" required></div>
+              <div class="field"><label>Your Email</label><input type="email" name="email" required></div>
+            </div>
+            <div class="field"><label>Message</label><textarea name="message" rows="5" placeholder="Write here..." required></textarea></div>
+            <button class="btn" type="submit">Send Email</button>
+          </form>
+          <p class="muted" style="margin-top:10px;">You can replace the mailto action with a backend/email service you control.</p>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div>Built for ethical recovery only. © <span id="year"></span></div>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+    // Incident details save/load
+    const saveBtn = $('#saveIncident');
+    const saveMsg = $('#saveMsg');
+    const fields = ['username','email','story'];
+
+    function loadIncident(){
+      fields.forEach(id => { const v = localStorage.getItem('ig_'+id); if(v) $('#'+id).value = v; });
+    }
+    function saveIncident(){
+      fields.forEach(id => localStorage.setItem('ig_'+id, $('#'+id).value.trim()));
+      saveMsg.style.display = 'block';
+      setTimeout(() => saveMsg.style.display = 'none', 2000);
+    }
+    saveBtn.addEventListener('click', saveIncident);
+    loadIncident();
+
+    // Checklist persistence
+    const checklist = $('#checklist');
+    function loadChecklist(){
+      $$('#checklist input[type="checkbox"]').forEach(cb => {
+        const key = cb.dataset.key; const v = localStorage.getItem('ig_ck_'+key);
+        cb.checked = v === '1';
+      });
+      updateAllDone();
+    }
+    function updateAllDone(){
+      const all = $$('#checklist input[type="checkbox"]').every(cb => cb.checked);
+      $('#allDone').style.display = all ? 'block' : 'none';
+    }
+    checklist.addEventListener('change', (e)=>{
+      if(e.target.matches('input[type="checkbox"]')){
+        const key = e.target.dataset.key;
+        localStorage.setItem('ig_ck_'+key, e.target.checked ? '1' : '0');
+        updateAllDone();
+      }
+    });
+    loadChecklist();
+
+    // Recovery log
+    const logKey = 'ig_recovery_log';
+    const logList = $('#logList');
+
+    function getLog(){
+      try { return JSON.parse(localStorage.getItem(logKey)) || []; } catch { return []; }
+    }
+    function setLog(items){ localStorage.setItem(logKey, JSON.stringify(items)); renderLog(); }
+
+    function renderLog(){
+      const items = getLog();
+      logList.innerHTML = items.map((it,i)=>`<div class="log-item"><div class="muted" style="font-size:.8rem">${new Date(it.t).toLocaleString()}</div><div>${it.txt}</div></div>`).join('');
+    }
+
+    $('#addLog').addEventListener('click', () => {
+      const txt = $('#logText').value.trim();
+      const t = $('#logTime').value ? new Date($('#logTime').value).toISOString() : new Date().toISOString();
+      if(!txt) return;
+      const items = getLog();
+      items.unshift({ t, txt });
+      setLog(items);
+      $('#logText').value = '';
+      $('#logTime').value = '';
+    });
+
+    $('#exportLog').addEventListener('click', () => {
+      const data = new Blob([localStorage.getItem(logKey) || '[]'], {type: 'application/json'});
+      const url = URL.createObjectURL(data);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'instagram-recovery-log.json'; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    $('#clearLog').addEventListener('click', () => { if(confirm('Clear your local recovery log?')) { localStorage.removeItem(logKey); renderLog(); } });
+
+    // Year
+    $('#year').textContent = new Date().getFullYear();
+
+    // Prefill timestamp
+    const dt = new Date();
+    dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset());
+    const iso = dt.toISOString().slice(0,16);
+    const logTime = document.getElementById('logTime');
+    if (logTime) logTime.value = iso;
+  </script>
+</body>
+</html>
